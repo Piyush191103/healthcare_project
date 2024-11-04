@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const User = require("../models/userModels");
+const User = require("../models/userModels"); // Ensure correct model name
 const bcrypt = require("bcrypt");
 require('dotenv').config();
 
@@ -56,4 +56,4 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 });
 
-module.exports = { registerUser};
+module.exports = { registerUser };
