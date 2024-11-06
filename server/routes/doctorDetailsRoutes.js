@@ -6,3 +6,4 @@ const { registerDoctor } = require("../controllers/doctorDetailsController");
 router.post("/register", registerDoctor);
 
 module.exports = router;
+
