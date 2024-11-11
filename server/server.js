@@ -60,7 +60,7 @@ app.get("/", (req, res) => {
 
 app.get("/home", (req, res) => {
     res.render("home", { 
-        username: "Piyush Kapoor",
+        username: "Piyush",
         age: 20,
     });
 });
@@ -68,8 +68,8 @@ app.get("/home", (req, res) => {
 app.get("/user", (req, res) => {
     const users = [
         { username: "Piyush", age: 20 },
-        { username: "Anjali", age: 20 },
-        { username: "Chaand", age: 20 }
+        { username: "Anju", age: 20 },
+        { username: "Anjali", age: 20 }
     ];
     res.render("user", { users });
 });
