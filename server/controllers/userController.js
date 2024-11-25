@@ -97,30 +97,27 @@ const getUserProfile = asyncHandler(async (req, res) => {
 
 // Update user profile
 const updateUserProfile = asyncHandler(async (req, res) => {
-    const userId = req.user.id;
-    const { firstName, lastName, email, age, gender, bloodGroup, phoneNumber, password } = req.body;
+const userId = req.user.id;
+const {firstName, lastName, email, age, gender, bloodGroup, phoneNumber} = req.body;
 
-    // Find user and return error if not found
-    const data = await User.findById(userId);
-    if (!data) return res.status(401).json({ message: "User not found" });
-
-    // Update password if provided
-    if (password) {
-        const salt = await bcrypt.genSalt(10);
-        data.password = await bcrypt.hash(password, salt);
+    const user = await User.findById(userId);
+    if (!user){
+        res.status(404);
+        res.json({message: "user not found"});
     }
 
-    // Update the user's fields with provided values
-    data.firstName = firstName || data.firstName;
-    data.lastName = lastName || data.lastName;
-    data.email = email || data.email;
-    data.age = age || data.age;
-    data.gender = gender || data.gender;
-    data.bloodGroup = bloodGroup || data.bloodGroup;
-    data.phoneNumber = phoneNumber || data.phoneNumber;
+    if (password){
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+    }
 
-    // Save the updated user
-    const updatedUser = await data.save();
+    const updatedUser = await User.findbyId(userId);
+
+
+    data.firstName == firstName || data.firstName;
+    data.lastName == lastName || data.lastName;
+    data.email 
+
 
     // Return success message and updated user data
     res.json({ message: "Profile updated successfully", user: updatedUser });
